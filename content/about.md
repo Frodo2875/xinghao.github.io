@@ -1,6 +1,6 @@
 ---
 title: 关于
-description: "关于 Xinghao：研究骡，AI Coding 重度患者，探索 AI Infra 与 Agent，也关注人格心理学。"
+description: "关于 Xinghao：研究甥，AI Coding 重度患者，探索 AI Infra 与 Agent，也关注人格心理学。"
 showDate: false
 showAuthor: false
 showTableOfContents: false
@@ -12,9 +12,7 @@ showPagination: false
 
 你好，我是 **Xinghao**，欢迎来到我的个人博客。
 
-> **研究骡 · AI Coding 重度患者**
->
-> 用代码构建想法，用文字沉淀思考。
+> **研究甥 · AI Coding 重度患者**
 
 这里用来记录技术学习、项目实践，以及日常的观察与思考。把问题写清楚，把过程留下来，也让下一次探索有迹可循。
 
@@ -23,7 +21,7 @@ showPagination: false
 - **学习轨迹**：DUTer → ECNUer。
 - **技术兴趣**：AI Infra → Agent。
 - **人格标签**：ENFJ 🌞，对人格心理学充满好奇。
-- **另一面**：人际关系针灸者，关注人与人之间的理解与连接。
+- **另一面**：人际关系针扎者，关注人与人之间的理解与连接。
 
 作为一名 **AI Coding 重度患者**，我喜欢借助 AI 把想法变成可以运行的东西，也记录过程中的尝试、问题与思考。
 

@@ -36,7 +36,6 @@ params:
   author:
     name: Xinghao
     headline: "学习，构建，记录。"
-    bio: "记录技术探索与日常思考。"
     links:
       - github: https://github.com/Frodo2875
   header:
