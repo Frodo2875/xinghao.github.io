@@ -1,29 +1,22 @@
-# 实施记录
+# Blowfish 主题迁移记录
 
-## 已完成
+## 范围
 
-- Hugo Extended 0.158.0 便携环境，官方 SHA256 校验通过。
-- PaperMod 官方 Git 子模块，当前固定提交 `969bebdc5600a1639158b5ef4eff9cf6cbb511ac`，保留 MIT 许可证。
-- 站点名称 `Xinghao's Blog`，中文导航、首页、文章列表、归档、分类、标签、搜索、关于。
-- 文章目录、面包屑、阅读时间、字数、代码高亮与复制、明暗模式和 RSS。
-- 数学公式按文章启用；本地 MathJax 3.2.2，npm 发布包 SHA512 完整性校验通过。
-- 三篇初始文章，其中数学与写作文章明确标为示例。未复制参考站文章或个人信息。
-- GitHub Pages 自动部署工作流及本地安装、预览、构建脚本。
+参考 `Blowfish_build.md`，以实际项目为准。此次目标为应用 Blowfish 主题并继续在 GitHub Pages 发布，保留原文章与路径，不扩展项目、评论或统计系统。
 
-## 发布配置
+## 实现
 
-目标仓库为 `Frodo2875/xinghao.github.io`，站点地址配置为 `https://frodo2875.github.io/xinghao.github.io/`。使用 GitHub Pages 免费托管及 Actions 自动部署。实际是否上线以 Actions 部署结果为准。
+- PaperMod 已替换为官方 Blowfish v3.9.0 Git 子模块，未修改主题源码。
+- Hugo Extended 升级到 0.166.0，Windows 发布包 SHA256 校验通过；Actions 共用版本文件。
+- 原生 Landing 首页、Ocean 配色、渐变首屏、卡片文章和明暗切换。
+- 中文导航、搜索、目录、代码复制、阅读进度、RSS 与分类标签。
+- 归档与 `/search/` 使用少量站点自有模板，保留旧入口。
+- 通过 `extend-head-uncached.html` 接入已有本地 MathJax，继续支持 `math: true`。
+- 保留 `https://frodo2875.github.io/xinghao.github.io/` 地址与现有 Pages 部署方式。
+- 文档、主题定制和第三方源码分开；用户提供的规划文档保留在本地。
 
-已添加 `Frodo2875` 的 GitHub 个人主页。评论暂未启用，需要后续使用自己的 Discussions 配置。
+## 验证
 
-## 风格边界
+Hugo 生产构建及内部资源检查通过。GitHub Actions 增加同样的链接检查，避免项目子路径资源失效。
 
-保留 PaperMod 默认简洁黑白样式，只调整中文行距、公式溢出和站点图标。暖白纸张配色、蓝色强调色、侧边目录或项目展示等额外风格待用户确认。
-
-## 验证限制
-
-浏览器检查曾尝试 Playwright 和内置预览，分别因浏览器进程启动失败、沙箱初始化失败而无法运行。因此没有完成实际视觉、点击交互与窄屏浏览器验收。成功构建不等同于浏览器验收通过。
-
-可使用 `scripts/check-output.py` 对生成目录检查内部链接和引用资源。GitHub Actions 需在实际仓库启用 Pages 后才能验证部署。
-
-已通过的检查：根域名与 `/Blog_gxh/` 子路径分别构建成功；每个版本检查 33 个 HTML 文件和 440 个内部链接、资源引用，均无缺失；本地预览 HTTP 200；中文全文搜索索引含数学文章正文；数学脚本与字体存在，JavaScript 语法检查通过。
+Edge 浏览器检查通过：首页 Landing 与渐变样式、明暗模式切换、中文搜索结果；桌面与 390 像素手机宽度无横向溢出；数学文章有 11 处渲染公式、0 个公式错误，代码复制按钮存在，浏览器控制台无错误。截图保存在本地忽略目录 `output/playwright/`，不提交到仓库。公网部署结果见 GitHub Actions。

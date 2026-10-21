@@ -1,0 +1,7 @@
+{{ define "main" }}
+<section class="prose dark:prose-invert mt-12">
+  <h1>{{ .Title }}</h1>
+  <p>搜索文章标题与正文。也可以使用导航栏的搜索按钮，或按 Ctrl / ⌘ + K。</p>
+  <button type="button" class="rounded-lg bg-primary-600 px-6 py-3 text-white font-semibold" onclick="document.getElementById('search-button').click()">打开站内搜索</button>
+</section>
+{{ end }}

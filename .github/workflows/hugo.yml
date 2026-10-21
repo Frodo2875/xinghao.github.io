@@ -47,6 +47,11 @@ jobs:
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
         run: hugo --gc --minify --baseURL "${SITE_URL}/"
+      - name: Check internal links and assets
+        if: github.event_name != 'pull_request'
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: python3 scripts/check-output.py public "${SITE_URL}/"
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,28 @@
+/* Site-owned additions; Blowfish supplies layout, cards and interactions. */
+#main-content > article.relative.isolate {
+  border-radius: 1.75rem;
+  background: radial-gradient(ellipse at 15% 10%, rgba(56, 189, 248, .14), transparent 55%),
+              radial-gradient(ellipse at 90% 80%, rgba(45, 212, 191, .10), transparent 55%);
+}
+.prose { line-height: 1.9; }
+.prose mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: .5rem 0;
+}
+.archive-year { margin-top: 2rem; }
+.archive-row {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(128, 128, 128, .2);
+}
+.archive-row time { flex-shrink: 0; font-size: .875rem; opacity: .65; }
+@media (max-width: 480px) {
+  .archive-row { flex-direction: column; gap: .25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; }
+}

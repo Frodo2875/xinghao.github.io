@@ -1,69 +1,88 @@
 baseURL: "https://frodo2875.github.io/xinghao.github.io/"
 title: "Xinghao's Blog"
-theme: PaperMod
-languageCode: zh-CN
-defaultContentLanguage: zh
+theme: blowfish
+locale: zh-CN
+defaultContentLanguage: zh-cn
 hasCJKLanguage: true
 timeZone: Asia/Shanghai
 enableRobotsTXT: true
 enableEmoji: true
+summaryLength: 100
 pagination:
-  pagerSize: 6
+  pagerSize: 9
 taxonomies:
   category: categories
   tag: tags
 outputs:
   home: [HTML, RSS, JSON]
+languages:
+  zh-cn:
+    locale: zh-CN
+    label: 简体中文
+    weight: 1
+    title: "Xinghao's Blog"
+    params:
+      displayName: 中文
+      isoCode: zh-CN
+      dateFormat: "2006 年 01 月 02 日"
 params:
-  env: production
   description: "Xinghao 的个人博客，记录技术学习、项目实践与日常思考。"
-  author: Xinghao
-  defaultTheme: auto
+  colorScheme: ocean
+  defaultAppearance: dark
+  autoSwitchAppearance: true
+  enableSearch: true
+  enableCodeCopy: true
   mainSections: [posts]
-  DateFormat: "2006 年 01 月 02 日"
-  ShowReadingTime: true
-  ShowWordCount: true
-  ShowBreadCrumbs: true
-  ShowPostNavLinks: true
-  ShowCodeCopyButtons: true
-  ShowToc: true
-  TocOpen: true
-  disableSpecial1stPost: true
-  comments: false
-  assets:
-    favicon: favicon.svg
-    favicon16x16: favicon-16x16.png
-    favicon32x32: favicon-32x32.png
-    apple_touch_icon: apple-touch-icon.png
-    safari_pinned_tab: favicon.svg
-    disableHLJS: true
-  homeInfoParams:
-    Title: "你好，我是 Xinghao 👋"
-    Content: |
-      学习，构建，记录。
-
-      这里是我的数字笔记本，收集技术探索、项目实践，以及值得留下的日常思考。
-
-      [浏览文章](posts/) · [按时间归档](archives/) · [关于我](about/)
-  socialIcons:
-    - name: github
-      url: https://github.com/Frodo2875
-    - name: rss
-      url: index.xml
-  fuseOpts:
-    isCaseSensitive: false
-    shouldSort: true
-    threshold: 0.35
-    minMatchCharLength: 1
-    keys: [title, permalink, summary, content]
+  author:
+    name: Xinghao
+    headline: "学习，构建，记录。"
+    bio: "记录技术探索与日常思考。"
+    links:
+      - github: https://github.com/Frodo2875
+  header:
+    layout: fixed-fill-blur
+  footer:
+    showCopyright: true
+    showThemeAttribution: true
+    showAppearanceSwitcher: true
+    showScrollToTop: true
+  homepage:
+    layout: landing
+    showRecent: true
+    showRecentItems: 6
+    cardView: true
+    showMoreLink: true
+    showMoreLinkDest: posts/
+  article:
+    showDate: true
+    showAuthor: true
+    showBreadcrumbs: true
+    showReadingTime: true
+    showWordCount: true
+    showTableOfContents: true
+    showTaxonomies: true
+    showPagination: true
+    showHeadingAnchors: true
+    showReadingProgress: true
+  list:
+    showSummary: true
+    showCards: true
+    cardView: true
+    groupByYear: false
+  taxonomy:
+    showTermCount: true
+  term:
+    cardView: true
 menu:
   main:
-    - {name: 首页, pageRef: /, weight: 10}
+    - {name: 文章, pageRef: /posts, weight: 10}
     - {name: 归档, pageRef: /archives, weight: 20}
     - {name: 分类, pageRef: /categories, weight: 30}
     - {name: 标签, pageRef: /tags, weight: 40}
-    - {name: 搜索, pageRef: /search, weight: 50}
-    - {name: 关于, pageRef: /about, weight: 60}
+    - {name: 关于, pageRef: /about, weight: 50}
+  footer:
+    - {name: RSS, url: "https://frodo2875.github.io/xinghao.github.io/index.xml", weight: 10}
+    - {name: GitHub, url: "https://github.com/Frodo2875", weight: 20}
 markup:
   goldmark:
     renderer:
@@ -75,5 +94,5 @@ markup:
           block: [['$$', '$$'], ['\[', '\]']]
           inline: [['$', '$'], ['\(', '\)']]
   highlight:
-    style: monokai
+    noClasses: false
     lineNos: false

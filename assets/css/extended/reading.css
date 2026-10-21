@@ -1,5 +1,0 @@
-/* Keep PaperMod's visual language; improve long Chinese and math passages. */
-.post-content { line-height: 1.85; overflow-wrap: break-word; }
-.post-content mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: .5rem 0; max-width: 100%; }
-.post-content pre { line-height: 1.6; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
