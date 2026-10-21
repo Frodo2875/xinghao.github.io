@@ -1,0 +1,13 @@
+/public/
+/resources/_gen/
+/.hugo_build.lock
+/.tools/
+/.preview/
+/node_modules/
+/.playwright-cli/
+/output/playwright/
+/.env
+/.env.*
+*.log
+.DS_Store
+Thumbs.db
