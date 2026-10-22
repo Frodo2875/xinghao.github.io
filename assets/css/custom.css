@@ -20,12 +20,18 @@
   border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 .archive-row time { flex-shrink: 0; font-size: .875rem; opacity: .65; }
+html.image-preview-open {
+  overflow: hidden;
+  overflow-anchor: none;
+}
+body.image-wheel-zoom { overflow-anchor: none; }
 .image-wheel-zoom .medium-zoom-image--opened {
   transition: none !important;
   cursor: grab;
   touch-action: none;
 }
 .image-wheel-zoom .medium-zoom-image--opened:active { cursor: grabbing; }
+.image-wheel-zoom .medium-zoom-overlay { touch-action: none; }
 .image-zoom-hint {
   position: fixed;
   z-index: 1000;
