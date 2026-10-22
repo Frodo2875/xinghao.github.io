@@ -20,6 +20,26 @@
   border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 .archive-row time { flex-shrink: 0; font-size: .875rem; opacity: .65; }
+.image-wheel-zoom .medium-zoom-image--opened {
+  transition: none !important;
+  cursor: grab;
+  touch-action: none;
+}
+.image-wheel-zoom .medium-zoom-image--opened:active { cursor: grabbing; }
+.image-zoom-hint {
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, .85);
+  color: #fff;
+  font-size: .8rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
 @media (max-width: 480px) {
   .archive-row { flex-direction: column; gap: .25rem; }
 }
