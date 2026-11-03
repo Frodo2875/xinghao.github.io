@@ -58,7 +58,6 @@ params:
   article:
     showDate: true
     showDateUpdated: true
-    showViews: true
     showAuthor: true
     showBreadcrumbs: true
     showReadingTime: true

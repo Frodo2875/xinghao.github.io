@@ -41,9 +41,6 @@
     {{ $meta.Add "partials" (slice (partial "meta/reading-time.html" .)) }}
   {{ end }}
 
-  {{ if and (eq $scope "single") (eq .Section "posts") (not .Params.externalURL) (.Params.showViews | default (.Site.Params.article.showViews | default false)) }}
-    {{ $meta.Add "partials" (slice (partial "meta/views.html" .)) }}
-  {{ end }}
 
   {{ if and (not .Params.externalURL) (.Params.showLikes | default (.Site.Params.article.showLikes | default false)) }}
     {{ $meta.Add "partials" (slice (partial "meta/likes.html" .)) }}

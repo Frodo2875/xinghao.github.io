@@ -8,7 +8,3 @@ window.MathJax = {
 </script>
 <script defer src="{{ "vendor/mathjax/tex-mml-chtml.js" | relURL }}"></script>
 {{- end }}
-
-{{- if and .IsPage (eq .Section "posts") hugo.IsProduction -}}
-<script defer src="https://busuanzi.9420.ltd/js"></script>
-{{- end -}}

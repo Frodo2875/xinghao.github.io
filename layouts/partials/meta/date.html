@@ -1,2 +1,2 @@
 {{- $date := . | time.In "Asia/Shanghai" -}}
-<time datetime="{{ $date.Format "2006-01-02T15:04:05-07:00" }}" title="北京时间（UTC+8）">{{ $date.Format "2006 年 01 月 02 日 15:04" }}（北京时间）</time>
+<time datetime="{{ $date.Format "2006-01-02T15:04:05-07:00" }}">{{ $date.Format "2006 年 01 月 02 日 15:04" }}</time>
