@@ -81,3 +81,11 @@ python .\scripts\check-output.py public https://frodo2875.github.io/xinghao.gith
 - [MathJax](https://github.com/mathjax/MathJax)：Apache-2.0，本地保存版本 3.2.2。
 
 第三方许可证保留在对应目录。本站文章未统一指定开源许可证。
+
+## 文章时间与浏览量
+
+文章日期精确到分钟，统一转换为北京时间（Asia/Shanghai，UTC+8）。发布日期来自文章 front matter 的 `date`；最近更新时间读取该 Markdown 文件的最新 Git 提交时间，文章发布修改后自动更新。单纯更改首页、主题或构建站点不会刷新文章更新时间。新文章请在 `date` 中填写实际发布时间（例如 `2026-11-03T16:30:00+08:00`），历史文章中已有的日期值保持不变。
+
+GitHub Actions 拉取完整历史，并设置 `core.quotepath=false`，以便 Hugo 正确识别中文文章路径。本地构建和预览脚本也会为当前仓库设置该项。
+
+文章详情信息栏使用开源 [soxft/busuanzi](https://github.com/soxft/busuanzi) 的公共计数服务显示共享浏览次数，从接入后开始累计；不是独立访客数，也无法追溯接入前的访问。统计仅在生产环境的文章详情页加载，不在首页卡片或本地常规预览中计数。服务暂不可用时显示“—”，不阻塞正文。该服务由第三方维护，公开说明不提供 SLA 或数据完整性保证。

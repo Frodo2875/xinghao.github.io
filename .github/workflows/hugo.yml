@@ -19,8 +19,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           submodules: recursive
           persist-credentials: false
+      - name: Preserve Unicode article paths for Git timestamps
+        run: git config core.quotepath false
       - name: Install verified Hugo binary
         shell: bash
         run: |

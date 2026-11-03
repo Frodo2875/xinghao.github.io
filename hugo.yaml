@@ -5,6 +5,9 @@ locale: zh-CN
 defaultContentLanguage: zh-cn
 hasCJKLanguage: true
 timeZone: Asia/Shanghai
+enableGitInfo: true
+frontmatter:
+  lastmod: [":git", lastmod, modified, date]
 enableRobotsTXT: true
 enableEmoji: true
 summaryLength: 100
@@ -24,7 +27,7 @@ languages:
     params:
       displayName: 中文
       isoCode: zh-CN
-      dateFormat: "2006 年 01 月 02 日"
+      dateFormat: "2006 年 01 月 02 日 15:04"
 params:
   description: "Xinghao 的个人博客，记录技术学习、项目实践与日常思考。"
   colorScheme: ocean
@@ -54,6 +57,8 @@ params:
     showMoreLinkDest: posts/
   article:
     showDate: true
+    showDateUpdated: true
+    showViews: true
     showAuthor: true
     showBreadcrumbs: true
     showReadingTime: true

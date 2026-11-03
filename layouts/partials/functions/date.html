@@ -1,0 +1,1 @@
+{{ return (. | time.In "Asia/Shanghai" | time.Format (site.Language.Params.dateFormat | default "2006 年 01 月 02 日 15:04")) }}
