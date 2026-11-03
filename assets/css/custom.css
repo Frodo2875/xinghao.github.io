@@ -1,9 +1,4 @@
 /* Site-owned additions; Blowfish supplies layout, cards and interactions. */
-#main-content > article.relative.isolate {
-  border-radius: 1.75rem;
-  background: radial-gradient(ellipse at 15% 10%, rgba(56, 189, 248, .14), transparent 55%),
-              radial-gradient(ellipse at 90% 80%, rgba(45, 212, 191, .10), transparent 55%);
-}
 .prose { line-height: 1.9; }
 .prose mjx-container[display="true"] {
   overflow-x: auto;
@@ -51,4 +46,69 @@ body.image-wheel-zoom { overflow-anchor: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; }
+}
+
+/* The night sky is local to the homepage introduction, in either theme. */
+#main-content > .starfield-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  background: #081a37;
+  box-shadow: 0 18px 55px rgb(10 35 75 / .12);
+}
+.starfield-background, .starfield-background > img, .starfield-shade,
+.starfield-meteors { position: absolute; inset: 0; width: 100%; height: 100%; }
+.starfield-background { z-index: -1; pointer-events: none; }
+.starfield-background > img { object-fit: cover; object-position: 50% 48%; }
+.starfield-shade {
+  background: linear-gradient(180deg, rgb(4 15 38 / .28), rgb(4 15 38 / .67)),
+              radial-gradient(ellipse at center, rgb(4 15 38 / .28), transparent 85%);
+}
+.dark .starfield-shade { background: linear-gradient(180deg, rgb(3 12 30 / .36), rgb(3 12 30 / .73)); }
+.starfield-content { position: relative; z-index: 1; }
+.starfield-hero h1 { color: #fff; text-shadow: 0 3px 24px rgb(0 10 30 / .5); }
+.starfield-hero .tracking-\[0\.25em\] { color: #c5e9ff; }
+.starfield-hero .landing-rise-2, .starfield-hero .prose,
+.starfield-hero .prose strong { color: #e3edf8; }
+.starfield-hero .landing-rise-2, .starfield-hero .prose { text-shadow: 0 2px 12px rgb(0 10 30 / .7); }
+.starfield-hero .landing-rise-3 a { text-shadow: none; }
+.starfield-hero .landing-rise-3 a:first-child { background: #1d4ed8; color: white; }
+.starfield-hero .landing-rise-3 a:first-child:hover { background: #2563eb; }
+.starfield-hero .landing-rise-3 a:last-child {
+  background: rgb(8 24 51 / .75); border-color: #94b7db; color: #fff;
+}
+.starfield-hero .landing-rise-3 a:last-child:hover { background: #173c65; border-color: #e0f2fe; }
+.starfield-hero a:focus-visible, .starfield-motion:focus-visible { outline: 2px solid #e0f2fe; outline-offset: 5px; }
+.starfield-motion {
+  position: absolute; z-index: 2; bottom: 1rem; right: 1.25rem;
+  color: #e3edf8; background: rgb(5 20 43 / .7); border: 1px solid rgb(197 233 255 / .4);
+  border-radius: 999px; padding: .35rem .8rem; font-size: .75rem; cursor: pointer;
+}
+.starfield-meteors { overflow: hidden; }
+.starfield-meteors i {
+  position: absolute; left: 62%; top: 2%; width: 160px; height: 2px;
+  background: linear-gradient(90deg, transparent, #b8e1ff 85%, #fff);
+  border-radius: 100%; opacity: 0; filter: drop-shadow(0 0 4px #b9e2ff);
+  transform: rotate(35deg); animation: starfield-shoot 12s linear infinite;
+}
+.starfield-meteors i:nth-child(2) { left: 13%; top: 7%; width: 110px; animation-duration: 17s; animation-delay: 4s; }
+.starfield-meteors i:nth-child(3) { left: 46%; top: 0; width: 130px; animation-duration: 23s; animation-delay: 9s; }
+@keyframes starfield-shoot {
+  0%, 2% { opacity: 0; transform: translate(-120px, -85px) rotate(35deg); }
+  3% { opacity: .85; }
+  9% { opacity: 0; transform: translate(380px, 265px) rotate(35deg); }
+  100% { opacity: 0; transform: translate(380px, 265px) rotate(35deg); }
+}
+.starfield-paused .starfield-meteors i, .starfield-offscreen .starfield-meteors i { animation-play-state: paused; }
+@media (max-width: 640px) {
+  #main-content > .starfield-hero { border-radius: 1.25rem; }
+  .starfield-background > img { object-position: 48% center; }
+  .starfield-hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+  .starfield-hero .prose { text-align: center; }
+  .starfield-motion { bottom: .7rem; right: .85rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .starfield-meteors { display: none; }
+  .starfield-motion { display: none; }
 }

@@ -1,0 +1,47 @@
+<article class="relative isolate overflow-hidden starfield-hero">
+  {{ with resources.Get "img/home-starfield.png" }}
+    {{ $wide := .Resize "1536x webp q85" }}
+    {{ $small := .Resize "768x webp q82" }}
+    <div class="starfield-background" aria-hidden="true">
+      <img class="nozoom" src="{{ $wide.RelPermalink }}"
+        srcset="{{ $small.RelPermalink }} 768w, {{ $wide.RelPermalink }} 1536w"
+        sizes="(max-width: 768px) 100vw, 1200px" alt=""
+        width="{{ .Width }}" height="{{ .Height }}"
+        loading="eager" decoding="async" fetchpriority="high">
+      <div class="starfield-shade"></div>
+      <div class="starfield-meteors"><i></i><i></i><i></i></div>
+    </div>
+  {{ end }}
+  <button class="starfield-motion" type="button" aria-pressed="false" aria-label="暂停流星动画">暂停流星</button>
+  <section class="starfield-content mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8">
+    <div class="mx-auto max-w-4xl text-center">
+      {{ with .Params.heroCaption | default .Site.Params.Author.name }}
+        <p class="landing-rise mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-primary-600 dark:text-primary-400">
+          {{ . | markdownify }}
+        </p>
+      {{ end }}
+      {{ with .Title }}
+        <h1 class="landing-rise landing-rise-1 text-balance text-5xl font-black leading-[1.05] tracking-tighter text-neutral-900 dark:text-white sm:text-7xl">
+          {{ . | emojify }}
+        </h1>
+      {{ end }}
+      {{ with .Params.heroLead }}
+        <p class="landing-rise landing-rise-2 mx-auto mt-6 max-w-3xl text-balance text-xl leading-8 text-neutral-600 dark:text-neutral-300 sm:text-2xl sm:leading-9">
+          {{ . | markdownify }}
+        </p>
+      {{ end }}
+      {{ with .Params.heroButtons }}
+        <div class="landing-rise landing-rise-3 mt-9 flex flex-wrap items-center justify-center gap-4">
+          {{ range . }}
+            {{ partial "cta-button.html" (dict "url" .url "label" .label "style" .style "github" .github) }}
+          {{ end }}
+        </div>
+      {{ end }}
+      <section class="landing-rise landing-rise-4 prose prose-lg mx-auto mt-10 max-w-3xl text-left dark:prose-invert sm:text-center">
+        {{ .Content }}
+      </section>
+    </div>
+  </section>
+</article>
+{{ $motion := resources.Get "js/home-starfield.js" | minify | fingerprint }}
+<script defer src="{{ $motion.RelPermalink }}" integrity="{{ $motion.Data.Integrity }}"></script>
