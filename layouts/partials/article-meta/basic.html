@@ -26,14 +26,11 @@
     {{ end }}
   {{ end }}
 
-  {{ if $shouldShowDate }}
-    {{ $meta.Add "partials" (slice (partial "meta/date.html" .Date)) }}
-  {{ end }}
-
-  {{ if and (.Params.showDateUpdated | default (.Site.Params.article.showDateUpdated | default false)) (ne (partial
-    "functions/date.html" .Date) (partial "functions/date.html" .Lastmod)) (gt (.Lastmod | time.Format "2006") 1)
-  }}
+  {{ $showUpdated := and (.Params.showDateUpdated | default (.Site.Params.article.showDateUpdated | default false)) (gt .Lastmod .Date) (ne (partial "functions/date.html" .Date) (partial "functions/date.html" .Lastmod)) }}
+  {{ if $showUpdated }}
     {{ $meta.Add "partials" (slice (partial "meta/date-updated.html" .Lastmod)) }}
+  {{ else if $shouldShowDate }}
+    {{ $meta.Add "partials" (slice (partial "meta/date.html" .Date)) }}
   {{ end }}
 
   {{ if and (.Params.showWordCount | default (.Site.Params.article.showWordCount | default false)) (ne .WordCount 0) }}
