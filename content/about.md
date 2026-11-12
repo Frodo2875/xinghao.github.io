@@ -10,6 +10,8 @@ showReadingProgress: false
 showPagination: false
 ---
 
+{{< about-profile name="Frodo2875" bio="记录成长的一切，享受世界给予我的一切" since="2026-10-21T00:00:00+08:00" >}}
+
 你好，我是 **Xinghao**，欢迎来到我的个人博客。
 
 > **研究甥 · AI Coding 重度患者**

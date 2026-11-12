@@ -1,0 +1,27 @@
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+{{- $categories := slice -}}
+{{- range $posts -}}
+  {{- range .GetTerms "categories" -}}
+    {{- $categories = $categories | append .RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+{{- $start := time.AsTime (.Get "since") -}}
+{{- $today := time.AsTime (now | time.In "Asia/Shanghai" | time.Format "2006-01-02") "Asia/Shanghai" -}}
+{{- $days := math.Max 0 (div (sub $today.Unix $start.Unix) 86400) -}}
+<section class="about-profile not-prose" aria-label="博主简介">
+  <div class="about-profile__identity">
+    {{- with resources.Get "img/profile.png" }}
+      {{- $avatar := .Fill "320x320 Center webp q88" }}
+      <img class="about-profile__avatar nozoom" src="{{ $avatar.RelPermalink }}" alt="" width="320" height="320" decoding="async">
+    {{- end }}
+    <div>
+      <h2>{{ .Get "name" }}</h2>
+      <p>{{ .Get "bio" }}</p>
+    </div>
+  </div>
+  <dl class="about-profile__stats">
+    <div><dt>篇文章</dt><dd>{{ len $posts }}</dd></div>
+    <div><dt>个分类</dt><dd>{{ len ($categories | uniq) }}</dd></div>
+    <div><dt>天陪伴</dt><dd>{{ int $days }}</dd></div>
+  </dl>
+</section>

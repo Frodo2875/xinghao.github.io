@@ -112,3 +112,73 @@ body.image-wheel-zoom { overflow-anchor: none; }
   .starfield-meteors { display: none; }
   .starfield-motion { display: none; }
 }
+
+/* About page profile: a banner behind the portrait and three site statistics. */
+.about-profile {
+  --profile-surface: #f7faff;
+  --profile-tile: #fff;
+  --profile-border: #dbe6f4;
+  --profile-accent: #1d4ed8;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-block: 0 2.25rem;
+  padding: 2rem clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 2rem);
+  border: 1px solid var(--profile-border);
+  border-radius: 1.25rem;
+  background: var(--profile-surface);
+}
+.dark .about-profile {
+  --profile-surface: #142033;
+  --profile-tile: #1d2b42;
+  --profile-border: #32435e;
+  --profile-accent: #a9d1ff;
+}
+.about-profile::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto;
+  height: 7rem;
+  background: linear-gradient(115deg, #d5ebfc, #eff6ff 75%);
+}
+.dark .about-profile::before {
+  background: linear-gradient(115deg, #244870, #1a2941 80%);
+}
+.about-profile__identity {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+.about-profile__avatar {
+  flex: none;
+  width: 7rem;
+  height: 7rem;
+  border: 4px solid var(--profile-surface);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgb(15 35 65 / .16);
+}
+.about-profile__identity h2 { font-size: 1.875rem; line-height: 1.2; font-weight: 800; }
+.about-profile__identity p { margin-top: .5rem; }
+.about-profile__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(.45rem, 2vw, .9rem);
+  margin-top: 1.5rem;
+}
+.about-profile__stats > div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: .25rem;
+  padding: .8rem .3rem;
+  text-align: center;
+  border: 1px solid var(--profile-border);
+  border-radius: .85rem;
+  background: var(--profile-tile);
+}
+.about-profile__stats dt { font-size: .875rem; }
+.about-profile__stats dd { color: var(--profile-accent); font-size: 1.5rem; font-weight: 750; line-height: 1.2; }
+@media (max-width: 560px) {
+  .about-profile__identity { flex-direction: column; text-align: center; }
+}
