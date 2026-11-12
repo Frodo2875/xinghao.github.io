@@ -183,31 +183,29 @@ body.image-wheel-zoom { overflow-anchor: none; }
   .about-profile__identity { flex-direction: column; text-align: center; }
 }
 
-/* Keep the About page aligned to the site's main column; prose stays readable in two panels. */
-.about-page .about-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  max-width: none;
-  gap: clamp(1rem, 2.5vw, 1.5rem);
-}
-.about-layout > .about-profile {
-  grid-column: 1 / -1;
-  margin: 0;
-}
-.about-layout .about-column {
-  min-width: 0;
-  overflow-wrap: anywhere;
-  padding: clamp(1rem, 3vw, 1.75rem);
+/* One centered reading column beneath the full-width About profile. */
+.about-page .about-layout { max-width: none; }
+.about-layout > .about-profile { margin-block: 0; }
+.about-layout .about-body {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 48rem;
+  margin: clamp(1.25rem, 3vw, 2.5rem) auto 0;
+  padding: clamp(1.125rem, 4vw, 2.75rem);
   border: 1px solid rgb(100 130 170 / .25);
   border-radius: 1.25rem;
   background: #f7faff;
+  font-size: clamp(1rem, .94rem + .3vw, 1.125rem);
+  line-height: 1.85;
+  overflow-wrap: anywhere;
 }
-.dark .about-layout .about-column { background: #142033; }
-.about-layout .about-column > :first-child { margin-top: 0; }
-.about-layout .about-column > :last-child { margin-bottom: 0; }
-@media (min-width: 840px) {
-  .about-page .about-layout {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    align-items: start;
-  }
+.dark .about-layout .about-body { background: #142033; }
+.about-body > :first-child { margin-top: 0; }
+.about-body > :last-child { margin-bottom: 0; }
+.about-body > :where(p, ul, blockquote) { margin-block: .95em; }
+.about-body > h2 { margin-block: 1.65em .5em; }
+.about-body > ul > li { margin-block: .32em; }
+@media (max-width: 560px) {
+  .about-layout .about-body { line-height: 1.75; }
+  .about-body > h2 { margin-top: 1.35em; }
 }
