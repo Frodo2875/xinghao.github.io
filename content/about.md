@@ -1,5 +1,6 @@
 ---
 title: 关于
+layout: about
 description: "关于 Xinghao：研究甥，AI Coding 重度患者，探索 AI Infra 与 Agent，也关注人格心理学。"
 showDate: false
 showAuthor: false
@@ -12,6 +13,7 @@ showPagination: false
 
 {{< about-profile name="Frodo2875" bio="记录成长的一切，享受世界给予我的一切" since="2026-10-21T00:00:00+08:00" >}}
 
+{{< about-column >}}
 你好，我是 **Xinghao**，欢迎来到我的个人博客。
 
 > **研究甥 · AI Coding 重度患者**
@@ -26,7 +28,9 @@ showPagination: false
 - **另一面**：人际关系针扎者，关注人与人之间的理解与连接。
 
 作为一名 **AI Coding 重度患者**，我喜欢借助 AI 把想法变成可以运行的东西，也记录过程中的尝试、问题与思考。
+{{< /about-column >}}
 
+{{< about-column >}}
 ## 你可以在这里找到
 
 - **技术笔记**：概念梳理、代码示例与问题排查。
@@ -44,3 +48,4 @@ showPagination: false
 使用 Hugo 构建，基于 Blowfish 主题，托管于 GitHub Pages。支持文章搜索、明暗模式、代码复制与数学公式。
 
 这个小站会随着写作慢慢生长。更多文章、项目与个人介绍，也会在这里持续更新。
+{{< /about-column >}}
