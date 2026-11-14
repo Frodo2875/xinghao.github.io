@@ -22,6 +22,6 @@
   <dl class="about-profile__stats">
     <div><dt>篇文章</dt><dd>{{ len $posts }}</dd></div>
     <div><dt>个分类</dt><dd>{{ len ($categories | uniq) }}</dd></div>
-    <div><dt>天陪伴</dt><dd>{{ int $days }}</dd></div>
+    <div><dt>天陪伴</dt><dd data-companion-since="{{ $start.Format "2006-01-02T15:04:05-07:00" }}">{{ int $days }}</dd></div>
   </dl>
 </section>

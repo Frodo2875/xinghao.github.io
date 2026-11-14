@@ -1,13 +1,12 @@
 {{ define "main" }}
   <article class="about-page">
-    <header id="single_header" class="mt-5">
+    <header id="single_header" class="mt-5 mb-6">
       <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title | emojify }}</h1>
-      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
-        {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
-      </div>
     </header>
     <div class="about-layout article-content prose dark:prose-invert mb-20">
       {{ .Content }}
     </div>
   </article>
+  {{ $counter := resources.Get "js/about-companion.js" | minify | fingerprint }}
+  <script defer src="{{ $counter.RelPermalink }}" integrity="{{ $counter.Data.Integrity }}"></script>
 {{ end }}

@@ -26,7 +26,18 @@
     {{ end }}
   {{ end }}
 
-  {{ $showUpdated := and (.Params.showDateUpdated | default (.Site.Params.article.showDateUpdated | default false)) (gt .Lastmod .Date) (ne (partial "functions/date.html" .Date) (partial "functions/date.html" .Lastmod)) }}
+  {{ $showDateUpdated := .Site.Params.article.showDateUpdated | default false }}
+  {{ if isset .Params "showdateupdated" }}
+    {{ $showDateUpdated = .Params.showDateUpdated }}
+  {{ end }}
+  {{/* A post's first Git commit is its publication, even if its front matter date is earlier. */}}
+  {{ $showUpdated := false }}
+  {{ if and $showDateUpdated .IsPage (eq .Section "posts") }}
+    {{ with .GitInfo }}
+      {{ $showUpdated = ne .Parent nil }}
+    {{ end }}
+    {{ $showUpdated = and $showUpdated (gt .Lastmod .PublishDate) }}
+  {{ end }}
   {{ if $showUpdated }}
     {{ $meta.Add "partials" (slice (partial "meta/date-updated.html" .Lastmod)) }}
   {{ else if $shouldShowDate }}
