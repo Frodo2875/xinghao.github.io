@@ -1,0 +1,29 @@
+{{ define "main" }}
+  <header class="mt-8 mb-10">
+    <h1 class="text-4xl font-extrabold">{{ .Title }}</h1>
+    <p class="mt-4 text-neutral-500 dark:text-neutral-400">{{ .Description }}</p>
+  </header>
+  <ul class="friend-grid mb-20" role="list">
+    {{ range .Params.friends }}
+      <li>
+        <a class="friend-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+          {{ with $.Resources.Get .avatar }}
+            {{ $avatar := .Fill "144x144 Center webp q88" }}
+            <img class="friend-card__avatar nozoom" src="{{ $avatar.RelPermalink }}" alt="" width="144" height="144" decoding="async">
+          {{ end }}
+          <div class="friend-card__body">
+            <h2>{{ .name }}</h2>
+            <p class="friend-card__site">{{ .site }}</p>
+            <p class="friend-card__description">{{ .description }}</p>
+          </div>
+          <span class="sr-only">（在新标签页打开）</span>
+          <span class="friend-card__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12h15m-6-6 6 6-6 6"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

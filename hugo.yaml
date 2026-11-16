@@ -83,6 +83,7 @@ menu:
     - {name: 归档, pageRef: /archives, weight: 20}
     - {name: 分类, pageRef: /categories, weight: 30}
     - {name: 标签, pageRef: /tags, weight: 40}
+    - {name: 友链, pageRef: /friends, weight: 45}
     - {name: 关于, pageRef: /about, weight: 50}
   footer:
     - {name: RSS, url: "https://frodo2875.github.io/xinghao.github.io/index.xml", weight: 10}
