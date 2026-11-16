@@ -7,7 +7,9 @@
     {{ range .Params.friends }}
       <li>
         <a class="friend-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-          {{ with $.Resources.Get .avatar }}
+          {{ with .initials }}
+            <span class="friend-card__avatar friend-card__avatar--initials" aria-hidden="true">{{ . }}</span>
+          {{ else with $.Resources.Get .avatar }}
             {{ $avatar := .Fill "144x144 Center webp q88" }}
             <img class="friend-card__avatar nozoom" src="{{ $avatar.RelPermalink }}" alt="" width="144" height="144" decoding="async">
           {{ end }}
