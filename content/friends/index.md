@@ -13,4 +13,9 @@ friends:
     url: https://minjieblog.github.io/
     initials: MJ
     description: "分享技术笔记和项目经验，也聊游戏、音乐与历史。"
+  - name: GentleCold
+    site: GentleCold's Blog
+    url: https://gentlecold.top/
+    avatar: gentlecold-avatar.png
+    description: "记录大模型推理、分布式系统与论文阅读。"
 ---
