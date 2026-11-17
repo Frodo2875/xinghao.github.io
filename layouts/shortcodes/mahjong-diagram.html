@@ -1,8 +1,17 @@
 {{- $name := .Get "src" -}}
 {{- $alt := .Get "alt" -}}
+{{- $height := int (.Get "height") -}}
+{{- $keepSketch := .Get "keep-sketch" -}}
 {{- with .Page.Resources.Get $name -}}
-  {{- /* Keep the full diagram, including the level label and signature. */ -}}
-  {{- $trimmed := .Filter (images.Process "crop 1475x1030 TopLeft png") (images.Process "crop 1390x885 BottomRight png") -}}
+  {{- $trimmed := .Filter
+    (images.Process (printf "crop 1475x%v TopLeft png" (add 145 $height)))
+    (images.Process (printf "crop 1390x%v BottomRight png" $height)) -}}
+  {{- if $keepSketch -}}
+    {{- /* The first level label overlaps the sketch vertically. Cover only
+          the label's remnant with blank background from the same rows. */ -}}
+    {{- $background := $trimmed.Crop "440x32 BottomLeft png" -}}
+    {{- $trimmed = $trimmed.Filter (images.Overlay $background 450 (sub $height 32)) -}}
+  {{- end -}}
   {{- $detail := $trimmed.Filter (images.UnsharpMask 0.8 0.55 0.02) (images.Process "webp lossless") -}}
   <img class="rounded-md" src="{{ $detail.RelPermalink }}" data-zoom-src="{{ $detail.RelPermalink }}"
        width="{{ $detail.Width }}" height="{{ $detail.Height }}" alt="{{ $alt }}"
