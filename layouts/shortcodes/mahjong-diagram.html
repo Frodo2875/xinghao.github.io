@@ -1,0 +1,12 @@
+{{- $name := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- with .Page.Resources.Get $name -}}
+  {{- /* Keep the full diagram, including the level label and signature. */ -}}
+  {{- $trimmed := .Filter (images.Process "crop 1475x1030 TopLeft png") (images.Process "crop 1390x885 BottomRight png") -}}
+  {{- $detail := $trimmed.Filter (images.UnsharpMask 0.8 0.55 0.02) (images.Process "webp lossless") -}}
+  <img class="rounded-md" src="{{ $detail.RelPermalink }}" data-zoom-src="{{ $detail.RelPermalink }}"
+       width="{{ $detail.Width }}" height="{{ $detail.Height }}" alt="{{ $alt }}"
+       loading="lazy" decoding="async">
+{{- else -}}
+  {{- errorf "Mahjong diagram %q missing at %s" $name .Position -}}
+{{- end -}}
