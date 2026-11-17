@@ -1,0 +1,88 @@
+{{- if and .IsSection (eq .Section "posts") -}}
+{{- $pager := .Paginator -}}
+<nav class="posts-pagination" aria-label="文章分页">
+  {{- with $pager.Prev }}
+    <a class="posts-pagination__control posts-pagination__step" href="{{ .URL }}" rel="prev"><span aria-hidden="true">‹</span> 上一页</a>
+  {{- else }}
+    <span class="posts-pagination__control posts-pagination__step" aria-disabled="true"><span aria-hidden="true">‹</span> 上一页</span>
+  {{- end }}
+  <ul class="posts-pagination__numbers" role="list" aria-label="页码">
+    {{- $last := 0 }}
+    {{- range $pager.Pagers }}
+      {{- $number := .PageNumber }}
+      {{- if or (le $pager.TotalPages 5) (eq $number 1) (eq $number $pager.TotalPages) (le (math.Abs (sub $number $pager.PageNumber)) 1) }}
+        {{- if gt (sub $number $last) 1 }}
+          <li class="posts-pagination__gap" aria-hidden="true">…</li>
+        {{- end }}
+        <li>
+          {{- if eq $number $pager.PageNumber }}
+            <span class="posts-pagination__control" aria-current="page" aria-label="第 {{ $number }} 页">{{ $number }}</span>
+          {{- else }}
+            <a class="posts-pagination__control" aria-label="第 {{ $number }} 页" href="{{ .URL }}">{{ $number }}</a>
+          {{- end }}
+        </li>
+        {{- $last = $number }}
+      {{- end }}
+    {{- end }}
+  </ul>
+  <span class="posts-pagination__compact" aria-current="page" aria-label="第 {{ $pager.PageNumber }} 页，共 {{ $pager.TotalPages }} 页">{{ $pager.PageNumber }} / {{ $pager.TotalPages }}</span>
+  {{- with $pager.Next }}
+    <a class="posts-pagination__control posts-pagination__step" href="{{ .URL }}" rel="next">下一页 <span aria-hidden="true">›</span></a>
+  {{- else }}
+    <span class="posts-pagination__control posts-pagination__step" aria-disabled="true">下一页 <span aria-hidden="true">›</span></span>
+  {{- end }}
+</nav>
+{{- else -}}
+{{- if gt .Paginator.TotalPages 1 -}}
+  <ul class="flex flex-row mt-8 justify-center">
+    {{- .Scratch.Set "paginator.ellipsed" false -}}
+    {{ if $.Paginator.HasPrev }}
+      <li>
+        <a
+          href="{{ $.Paginator.Prev.URL }}"
+          class="mx-1 block min-w-[1.8rem] rounded text-center hover:bg-primary-600 hover:text-neutral"
+          rel="prev"
+          >&larr;</a
+        >
+      </li>
+    {{ end }}
+    {{- range $.Paginator.Pagers -}}
+      {{- $right := sub .TotalPages .PageNumber -}}
+      {{- $showNumber := or (le .PageNumber 1) (eq $right 0) -}}
+      {{- $showNumber := or $showNumber (and (gt .PageNumber (sub $.Paginator.PageNumber 3)) (lt .PageNumber (add $.Paginator.PageNumber 3))) -}}
+      {{- if $showNumber -}}
+        {{- $.Scratch.Set "paginator.ellipsed" false -}}
+        {{- $.Scratch.Set "paginator.shouldEllipse" false -}}
+      {{- else -}}
+        {{- $.Scratch.Set "paginator.shouldEllipse" (not ($.Scratch.Get "paginator.ellipsed") ) -}}
+        {{- $.Scratch.Set "paginator.ellipsed" true -}}
+      {{- end -}}
+      {{- if $showNumber -}}
+        <li>
+          <a
+            href="{{ .URL }}"
+            class="{{ if eq . $.Paginator }}
+              bg-primary-200 dark:bg-primary-400 dark:text-neutral-800
+            {{ end }} mx-1 block min-w-[1.8rem] rounded text-center hover:bg-primary-600 hover:text-neutral"
+            >{{ .PageNumber }}</a
+          >
+        </li>
+      {{- else if ($.Scratch.Get "paginator.shouldEllipse") -}}
+        <li class="page-item ">
+          <span class="page-link" aria-hidden="true">&hellip;</span>
+        </li>
+      {{- end -}}
+    {{- end -}}
+    {{ if $.Paginator.HasNext }}
+      <li>
+        <a
+          href="{{ $.Paginator.Next.URL }}"
+          class="mx-1 block min-w-[1.8rem] rounded text-center hover:bg-primary-600 hover:text-neutral"
+          rel="next"
+          >&rarr;</a
+        >
+      </li>
+    {{ end }}
+  </ul>
+{{- end -}}
+{{- end -}}
