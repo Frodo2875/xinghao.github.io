@@ -1,0 +1,99 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='2320' height='1525' viewBox='40 25 2320 1525'><rect width='2400' height='1600' fill='#FBF7FD'/>
+<text x='60' y='73' font-family='Microsoft YaHei,Arial,sans-serif' font-size='43' font-weight='700' fill='#5C3A77'>中心 OB 接入方案（待验证）</text>
+<rect x='60' y='115' width='2280' height='150' rx='18' fill='#EFE0FA' stroke='#BE8BE0' stroke-width='2'/>
+<text x='82' y='159' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>统一采集管理（项目配套）</text>
+<text x='82' y='200' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>目标台账、凭据引用、指标模板、采集周期、配置版本、灰度与回滚；复用企业现有 OCP 管理 OB</text>
+<text x='82' y='234' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>统一监测采集成功率、数据新鲜度、发送积压及采集器资源；不在本图强行指定某个管理产品</text>
+<text x='60' y='342' font-family='Microsoft YaHei,Arial,sans-serif' font-size='32' font-weight='700' fill='#5C3A77'>已有 / 可选采集端</text>
+<text x='860' y='342' font-family='Microsoft YaHei,Arial,sans-serif' font-size='32' font-weight='700' fill='#5C3A77'>传输与接收适配（项目建设）</text>
+<text x='1720' y='342' font-family='Microsoft YaHei,Arial,sans-serif' font-size='32' font-weight='700' fill='#5C3A77'>中心统一存储</text>
+<rect x='60' y='390' width='650' height='200' rx='18' fill='#EFE0FA' stroke='#BE8BE0' stroke-width='2'/>
+<text x='82' y='434' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>Telegraf</text>
+<text x='82' y='475' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>数据库输入插件 / 自定义 SQL</text>
+<text x='82' y='509' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>各输出独立缓冲：memory / disk</text>
+<text x='82' y='543' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>outputs.http + Remote Write 或 JSON</text>
+<text x='82' y='577' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>磁盘缓冲及重试按版本、插件配置</text>
+<rect x='60' y='690' width='650' height='200' rx='18' fill='#EFE0FA' stroke='#BE8BE0' stroke-width='2'/>
+<text x='82' y='734' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>Categraf</text>
+<text x='82' y='775' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>数据库 / 主机插件 → 原生内存队列</text>
+<text x='82' y='809' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>Protobuf + Snappy / Remote Write</text>
+<text x='82' y='843' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>原生失败补传能力不足需补齐</text>
+<text x='82' y='877' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>已到网关的数据可另做持久化保护</text>
+<rect x='60' y='990' width='650' height='200' rx='18' fill='#EFE0FA' stroke='#BE8BE0' stroke-width='2'/>
+<text x='82' y='1034' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>企业现有 OCP Agent</text>
+<text x='82' y='1075' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>复用已采的 OB 常规指标</text>
+<text x='82' y='1109' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>HTTP 指标接口 /metrics/...</text>
+<text x='82' y='1143' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>中心按版本与鉴权约束主动拉取</text>
+<text x='82' y='1177' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>不替换 OCP 默认 MonitorDB</text>
+<rect x='865' y='390' width='690' height='200' rx='18' fill='#FEFCFF' stroke='#D9C3E9' stroke-width='2'/>
+<text x='887' y='434' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>HTTP(S) 接收入口</text>
+<text x='887' y='475' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>Telegraf 与 Categraf 主动发送</text>
+<text x='887' y='509' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>分别解码 JSON 或 Remote Write</text>
+<text x='887' y='543' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>需要时接入现成持久化网关</text>
+<text x='887' y='577' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>网关之前的链路仍需确认 / 重试</text>
+<rect x='865' y='990' width='690' height='200' rx='18' fill='#FEFCFF' stroke='#D9C3E9' stroke-width='2'/>
+<text x='887' y='1034' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>OCP 指标拉取适配器</text>
+<text x='887' y='1075' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>由中心发起 HTTP 请求，Agent 返回指标</text>
+<text x='887' y='1109' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>解析 Prometheus 格式；统一时间与实例标识</text>
+<text x='887' y='1143' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>仅纳入接口公开的指标，不假设覆盖诊断全量</text>
+<text x='887' y='1177' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>拉取失败会产生采样缺口，不默认历史补传</text>
+<polyline points='710,490 865,490' fill='none' stroke='#A982C2' stroke-width='3' />
+<polygon points='865,490 852,484 852,496' fill='#A982C2'/>
+<text x='735' y='466' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#5C3A77'>HTTPS</text>
+<polyline points='710,790 790,790 790,545 865,545' fill='none' stroke='#A982C2' stroke-width='3' />
+<polygon points='865,545 852,539 852,551' fill='#A982C2'/>
+<text x='735' y='769' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#5C3A77'>HTTPS</text>
+<polyline points='865,1080 710,1080' fill='none' stroke='#A982C2' stroke-width='3' stroke-dasharray='8 7'/>
+<polygon points='710,1080 723,1086 723,1074' fill='#A982C2'/>
+<text x='725' y='1057' font-family='Microsoft YaHei,Arial,sans-serif' font-size='22' font-weight='400' fill='#5C3A77'>HTTP 请求</text>
+<polyline points='710,1150 865,1150' fill='none' stroke='#A982C2' stroke-width='3' />
+<polygon points='865,1150 852,1144 852,1156' fill='#A982C2'/>
+<text x='725' y='1219' font-family='Microsoft YaHei,Arial,sans-serif' font-size='22' font-weight='400' fill='#5C3A77'>指标响应</text>
+<rect x='865' y='690' width='690' height='210' rx='18' fill='#EFE0FA' stroke='#BE8BE0' stroke-width='2'/>
+<text x='887' y='734' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>统一处理与 OB 写入器</text>
+<text x='887' y='775' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>统一指标名、单位、标签、实例 ID 与时间戳</text>
+<text x='887' y='809' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>按接入链路配置有界磁盘缓冲 / 可重试错误</text>
+<text x='887' y='843' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>批量写入；幂等 / 去重；错误隔离</text>
+<text x='887' y='877' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>推送入口在 OB 提交成功后确认，或明确持久化接收边界</text>
+<polyline points='1210,590 1210,690' fill='none' stroke='#A982C2' stroke-width='3' />
+<polygon points='1210,690 1216,677 1204,677' fill='#A982C2'/>
+<polyline points='1210,990 1210,900' fill='none' stroke='#A982C2' stroke-width='3' />
+<polygon points='1210,900 1204,913 1216,913' fill='#A982C2'/>
+<polyline points='865,440 820,440 820,355 730,355 730,420 710,420' fill='none' stroke='#A982C2' stroke-width='3' stroke-dasharray='8 7'/>
+<polygon points='710,420 723,426 723,414' fill='#A982C2'/>
+<text x='865' y='373' font-family='Microsoft YaHei,Arial,sans-serif' font-size='23' font-weight='400' fill='#8B729C'>推送确认：仅对对应接入链路生效</text>
+<rect x='1720' y='690' width='620' height='210' rx='18' fill='#EFE0FA' stroke='#BE8BE0' stroke-width='2'/>
+<text x='1742' y='734' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>中心 OB 数据库</text>
+<text x='1742' y='775' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>指标表：时间、实例、指标、标签、值</text>
+<text x='1742' y='809' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>SQL 指纹表：归一化模板与去重</text>
+<text x='1742' y='843' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>SQL 分钟统计表：按实例和指纹聚合</text>
+<text x='1742' y='877' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>按指标精度、用途设置分区和保留期限</text>
+<polyline points='1555,795 1720,795' fill='none' stroke='#A982C2' stroke-width='3' />
+<polygon points='1720,795 1707,789 1707,801' fill='#A982C2'/>
+<text x='1580' y='758' font-family='Microsoft YaHei,Arial,sans-serif' font-size='23' font-weight='400' fill='#5C3A77'>数据库连接</text>
+<text x='1580' y='848' font-family='Microsoft YaHei,Arial,sans-serif' font-size='23' font-weight='400' fill='#5C3A77'>批量写入</text>
+<rect x='1720' y='990' width='620' height='200' rx='18' fill='#FEFCFF' stroke='#D9C3E9' stroke-width='2'/>
+<text x='1742' y='1034' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>存储侧处理</text>
+<text x='1742' y='1075' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>近期细粒度；长期按指标类型降采样</text>
+<text x='1742' y='1109' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>到期分区清理；限制标签维度膨胀</text>
+<text x='1742' y='1143' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>容量、写入吞吐、查询延迟需实测</text>
+<text x='1742' y='1177' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>补传写入受控，避免挤占正常写入</text>
+<polyline points='2030,900 2030,990' fill='none' stroke='#A982C2' stroke-width='3' />
+<polygon points='2030,990 2036,977 2024,977' fill='#A982C2'/>
+<path d='M50 1260 H2350' stroke='#E4D5ED' stroke-width='2'/>
+<rect x='60' y='1300' width='700' height='225' rx='18' fill='#EFE0FA' stroke='#BE8BE0' stroke-width='2'/>
+<text x='82' y='1344' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>采的开销</text>
+<text x='82' y='1385' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>轻量指标定时采；诊断明细按需采</text>
+<text x='82' y='1419' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>控制查询、周期、连接数、超时和并发</text>
+<text x='82' y='1453' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>优先复用已有 OCP 数据，避免重复采集</text>
+<rect x='850' y='1300' width='700' height='225' rx='18' fill='#EFE0FA' stroke='#BE8BE0' stroke-width='2'/>
+<text x='872' y='1344' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>传的开销</text>
+<text x='872' y='1385' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>批量、连接复用、压缩、错峰、受控补传</text>
+<text x='872' y='1419' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>磁盘缓冲不是长期数据库；容量需核算</text>
+<text x='872' y='1453' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>第一阶段不引入 Kafka；按实际需求再评估</text>
+<rect x='1640' y='1300' width='700' height='225' rx='18' fill='#EFE0FA' stroke='#BE8BE0' stroke-width='2'/>
+<text x='1662' y='1344' font-family='Microsoft YaHei,Arial,sans-serif' font-size='28' font-weight='700' fill='#5C3A77'>存的开销</text>
+<text x='1662' y='1385' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>统一入中心 OB，不为每种探针重复建存储</text>
+<text x='1662' y='1419' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>指标、指纹和分钟统计分别落表</text>
+<text x='1662' y='1453' font-family='Microsoft YaHei,Arial,sans-serif' font-size='24' font-weight='400' fill='#776783'>保留期限和降采样规则按用途验收</text>
+</svg>
