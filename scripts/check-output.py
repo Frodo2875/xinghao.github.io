@@ -13,7 +13,7 @@ class Links(HTMLParser):
     def handle_starttag(self, tag, attrs):
         for name, value in attrs:
             if name in ("href", "src") and value:
-                self.urls.append(value)
+                self.urls.append((tag, name, value))
 
 
 def main():
@@ -31,7 +31,7 @@ def main():
         page_url = urljoin(args.base_url, relative.removesuffix("index.html"))
         links = Links()
         links.feed(page.read_text(encoding="utf-8"))
-        for value in links.urls:
+        for tag, attr, value in links.urls:
             if value.startswith("#"):
                 continue
             parsed = urlsplit(urljoin(page_url, value))
@@ -39,6 +39,13 @@ def main():
                 continue
             path = unquote(parsed.path)
             if not path.startswith(prefix):
+                # The photo wall is a separate site at the same GitHub Pages origin.
+                if (
+                    relative == "about/index.html"
+                    and (tag, attr) == ("a", "href")
+                    and value == "https://frodo2875.github.io/photowall/"
+                ):
+                    continue
                 errors.append(f"{relative}: URL escapes site prefix: {value}")
                 continue
             target = args.directory / path[len(prefix):]
