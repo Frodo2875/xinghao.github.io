@@ -64,6 +64,7 @@ showPagination: false
 
 - **GitHub**：[Frodo2875](https://github.com/Frodo2875)
 - **小红书**：6025032171
+- **抖音**：[打开抖音](https://www.douyin.com/user/self)
 - **照片墙**：[查看照片墙](https://frodo2875.github.io/photowall/)
 
 ## 关于这个小站
